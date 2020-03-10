@@ -2,10 +2,15 @@ import React from 'react';
 import { Button } from 'antd';
 import './App.css';
 
+const handleClick = () => {
+    debugger;
+  alert('hello world');
+};
+
 function App() {
   return (
     <div className="App">
-        <Button type="primary">Button</Button>
+        <Button onClick={handleClick} type="primary">Button</Button>
     </div>
   );
 }
