@@ -1,18 +1,20 @@
 import React from 'react';
 import { Button } from 'antd';
+import Welcome from './Welcome';
+import NotFound from './NotFound';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
-const handleClick = () => {
-    debugger;
-  alert('hello world');
+const handleClick = (props) => {
+  props.history.push('/welcome');
 };
 
-function App() {
-  return (
-    <div className="App">
-        <Button onClick={handleClick} type="primary">Button</Button>
-    </div>
-  );
-}
-
-export default App;
+export default () => (
+    <Router>
+        <Switch>
+            <Route exact path="/" render={(props) => <Button onClick={() => handleClick(props)}>click</Button>} />
+            <Route path="/welcome" component={Welcome} />
+            <Route component={NotFound} />
+        </Switch>
+    </Router>
+);
